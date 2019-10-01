@@ -24,5 +24,30 @@ namespace AlumnosDB2
         {
             InitializeComponent();
         }
+
+        private void BtnNuevo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSalir_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
