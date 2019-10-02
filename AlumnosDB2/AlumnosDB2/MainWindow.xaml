@@ -38,8 +38,8 @@
                 </ComboBox>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="Telefono : "/>
-                <TextBlock Name="txtTelefono" />
+                <TextBlock Text="Telefono : " />
+                <TextBox Name="txtTelefono" />
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Dirección "/>
