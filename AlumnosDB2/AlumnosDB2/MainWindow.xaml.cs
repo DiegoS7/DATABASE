@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.OleDb;
+using System.Data;
 
 namespace AlumnosDB2
 {
@@ -20,9 +22,13 @@ namespace AlumnosDB2
     /// </summary>
     public partial class MainWindow : Window
     {
+        OleDbConnection con; //Agregamos la conexion
+        DataTable dt; //Agregar la tabla
         public MainWindow()
         {
             InitializeComponent();
+            con = new OleDbConnection();
+            con.ConnectionString = "Provider=Microsoft.jet.Oledb.4.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\AlumnosDb.mdb";
         }
 
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
