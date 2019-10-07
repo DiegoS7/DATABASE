@@ -55,6 +55,18 @@ namespace AlumnosDB2
                 gvDatos.Visibility = System.Windows.Visibility.Hidden;
             }
         }
+
+        private void LimpiarTodo()
+        {
+            txtId.Text = "";
+            txtNombre.Text = "";
+            cbGenero.SelectedIndex = 0;
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+            btnNuevo.Content = "Nuevo";
+            txtId.IsEnabled = true;
+        }
+
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
         {
 
