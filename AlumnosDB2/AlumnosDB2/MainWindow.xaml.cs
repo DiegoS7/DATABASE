@@ -40,6 +40,20 @@ namespace AlumnosDB2
                 con.Open();
             cmd.Connection = con;
             cmd.CommandText = "select * from Progra";
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            dt = new DataTable();
+            da.Fill(dt); ;
+            gvDatos.ItemsSource = dt.AsDataView();
+            if (dt.Rows.Count > 0)
+            {
+                lbContenido.Visibility = System.Windows.Visibility.Hidden;
+                gvDatos.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                lbContenido.Visibility = System.Windows.Visibility.Visible;
+                gvDatos.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
         {
