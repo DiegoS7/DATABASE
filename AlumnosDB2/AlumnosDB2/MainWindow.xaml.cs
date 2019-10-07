@@ -69,7 +69,17 @@ namespace AlumnosDB2
 
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
         {
-
+            OleDbCommand cmd = new OleDbCommand();
+            if (con.State != ConnectionState.Open)
+                con.Open();
+            cmd.Connection = con;
+            if (txtId.Text != "")
+            {
+                if(cbGenero.Text!="Selecciona Genero")
+                {
+                    cmd.CommandText = "insert into Progra(Id,Nombre,Genero,Telefono,Direccion)" + "Values(" + txtId.Text + ",'" + txtNombre.Text + ",'" + cbGenero.Text + ",'" + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
+                }
+            }
         }
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
