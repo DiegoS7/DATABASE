@@ -78,7 +78,22 @@ namespace AlumnosDB2
                 if(cbGenero.Text!="Selecciona Genero")
                 {
                     cmd.CommandText = "insert into Progra(Id,Nombre,Genero,Telefono,Direccion)" + "Values(" + txtId.Text + ",'" + txtNombre.Text + ",'" + cbGenero.Text + ",'" + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Alumno agregado correctamente... ");
+                    LimpiarTodo();
                 }
+                else
+                {
+                    MessageBox.Show("Favor de seleccionar el genero...");
+                }
+            }
+            else
+            {
+                cmd.CommandText = "update Progra set Nombre='" + txtNombre.Text + "'Genero='" + cbGenero.Text + "',Telefono=" + txtTelefono.Text + ",Direccion'=" + txtTelefono.Text + "'where Id=" + txtId.Text;
+                cmd.ExecuteNonQuery();
+                MostrarDatos();
+                MessageBox.Show("Datos del alumno Actualizados...");
+                LimpiarTodo();
             }
         }
 
