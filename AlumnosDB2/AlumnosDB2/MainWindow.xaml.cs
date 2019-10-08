@@ -40,7 +40,7 @@ namespace AlumnosDB2
                 con.Open();
             cmd.Connection = con;
             cmd.CommandText = "select * from Progra";
-            OleDbDataAdapter da = new OleDbDataAdapter();
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             dt = new DataTable();
             da.Fill(dt); ;
             gvDatos.ItemsSource = dt.AsDataView();
