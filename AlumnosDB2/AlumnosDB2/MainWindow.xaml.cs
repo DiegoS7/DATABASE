@@ -42,7 +42,7 @@ namespace AlumnosDB2
             cmd.CommandText = "select * from Progra";
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             dt = new DataTable();
-            da.Fill(dt); ;
+            da.Fill(dt);
             gvDatos.ItemsSource = dt.AsDataView();
             if (dt.Rows.Count > 0)
             {
@@ -73,27 +73,38 @@ namespace AlumnosDB2
             if (con.State != ConnectionState.Open)
                 con.Open();
             cmd.Connection = con;
+
             if (txtId.Text != "")
             {
-                if(cbGenero.Text!="Selecciona Genero")
+                if (txtId.IsEnabled == true)
                 {
-                    cmd.CommandText = "insert into Progra(Id,Nombre,Genero,Telefono,Direccion)" + "Values(" + txtId.Text + ",'" + txtNombre.Text + ",'" + cbGenero.Text + ",'" + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Alumno agregado correctamente... ");
-                    LimpiarTodo();
+                    if (cbGenero.Text != "Selecciona Genero")
+                    {
+                        cmd.CommandText = "insert into Progra(Id,Nombre,Genero,Telefono,Direccion) " +
+                            "Values(" + txtId.Text + ",'" + txtNombre.Text + "','" + cbGenero.Text + "'," + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
+                        cmd.ExecuteNonQuery();
+                        MostrarDatos();
+                        MessageBox.Show("Alumno agregado correctamente...");
+                        LimpiarTodo();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Favor de seleccionar el genero....");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Favor de seleccionar el genero...");
+                    cmd.CommandText = "update Progra set Nombre='" + txtNombre.Text + "',Genero='" + cbGenero.Text + "',Telefono=" + txtTelefono.Text + ",Direccion='" + txtDireccion.Text + "' where Id=" + txtId.Text;
+                    cmd.ExecuteNonQuery();
+                    MostrarDatos();
+                    MessageBox.Show("Datos del alumno Actualizados...");
+                    LimpiarTodo();
                 }
             }
             else
             {
-                cmd.CommandText = "update Progra set Nombre='" + txtNombre.Text + "'Genero='" + cbGenero.Text + "',Telefono=" + txtTelefono.Text + ",Direccion'=" + txtTelefono.Text + "'where Id=" + txtId.Text;
-                cmd.ExecuteNonQuery();
-                MostrarDatos();
-                MessageBox.Show("Datos del alumno Actualizados...");
-                LimpiarTodo();
+                MessageBox.Show("Favor de poner el ID de un Alumno.......");
             }
         }
         //Editamos alumnos existentes
