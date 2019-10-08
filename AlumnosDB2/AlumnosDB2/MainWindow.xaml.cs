@@ -139,12 +139,12 @@ namespace AlumnosDB2
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            LimpiarTodo();
         }
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }
