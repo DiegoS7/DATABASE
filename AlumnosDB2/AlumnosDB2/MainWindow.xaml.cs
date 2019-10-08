@@ -96,10 +96,24 @@ namespace AlumnosDB2
                 LimpiarTodo();
             }
         }
-
+        //Editamos alumnos existentes
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
         {
-
+            if(gvDatos.SelectedItems.Count>0)
+            {
+                DataRowView row = (DataRowView)gvDatos.SelectedItems[0];
+                txtId.Text = row["Id"].ToString();
+                txtNombre.Text = row["Nombre"].ToString();
+                cbGenero.Text = row["Genero"].ToString();
+                txtTelefono.Text = row["Telefono"].ToString();
+                txtDireccion.Text = row["Direccion"].ToString();
+                txtId.IsEnabled = false;
+                btnNuevo.Content = "Actualizar";
+            }
+            else
+            {
+                MessageBox.Show("Favor de Seleccionar un alumno...");
+            }
         }
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
