@@ -118,7 +118,23 @@ namespace AlumnosDB2
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            if (gvDatos.SelectedItems.Count > 0)
+            {
+                DataRowView row = (DataRowView)gvDatos.SelectedItems[0];
+                OleDbCommand cmd = new OleDbCommand();
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                cmd.Connection = con;
+                cmd.CommandText = "delete from Progra where Id=" + row["Id"].ToString();
+                cmd.ExecuteNonQuery();
+                MostrarDatos();
+                MessageBox.Show("Alumno eliminado correctamente...");
+                LimpiarTodo();
+            }
+            else
+            {
+                MessageBox.Show("Favor de Seleccionar un alumno...");
+            }
         }
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
