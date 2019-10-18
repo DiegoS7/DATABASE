@@ -39,7 +39,7 @@ namespace WpfApp1
             if (con.State != ConnectionState.Open)
                 con.Open();
             cmd.Connection = con;
-            cmd.CommandText = "select * from Celphone";
+            cmd.CommandText = "select * from celphone";
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             dt = new DataTable();
             da.Fill(dt);
@@ -80,7 +80,7 @@ namespace WpfApp1
                 {
                     if (cbCompania.Text != "Selecciona Compania")
                     {
-                        cmd.CommandText = "insert into Celphone(Id,Modelo,Compania,Problema,Comentario) " +
+                        cmd.CommandText = "insert into celphone(Id,Modelo,Compania,Problema,Comentario) " +
                             "Values(" + txtId.Text + ",'" + txtModel.Text + "','" + cbCompania.Text + "'," + txtProblema.Text + ",'" + txtComentario.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
@@ -95,7 +95,7 @@ namespace WpfApp1
                 }
                 else
                 {
-                    cmd.CommandText = "update Celphone set Modelo='" + txtModel.Text + "',Compania='" + cbCompania.Text + "',Problema=" + txtProblema.Text + ",Comentario='" + txtComentario.Text + "' where Id=" + txtId.Text;
+                    cmd.CommandText = "update celphone set Modelo='" + txtModel.Text + "',Compania='" + cbCompania.Text + "',Problema=" + txtProblema.Text + ",Comentario='" + txtComentario.Text + "' where Id=" + txtId.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
                     MessageBox.Show("Datos de la Consulta Actualizados...");
@@ -136,7 +136,7 @@ namespace WpfApp1
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 cmd.Connection = con;
-                cmd.CommandText = "delete from Celphone where Id=" + row["Id"].ToString();
+                cmd.CommandText = "delete from celphone where Id=" + row["Id"].ToString();
                 cmd.ExecuteNonQuery();
                 MostrarDatos();
                 MessageBox.Show("Consulta eliminada correctamente...");
