@@ -84,13 +84,13 @@ namespace WpfApp1
                             "Values(" + txtId.Text + ",'" + txtModel.Text + "','" + cbCompania.Text + "'," + txtProblema.Text + ",'" + txtComentario.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
-                        MessageBox.Show("Alumno agregado correctamente...");
+                        MessageBox.Show("Consulta agregada correctamente...");
                         LimpiarTodo();
 
                     }
                     else
                     {
-                        MessageBox.Show("Favor de seleccionar el genero....");
+                        MessageBox.Show("Favor de seleccionar la Compania....");
                     }
                 }
                 else
@@ -98,13 +98,13 @@ namespace WpfApp1
                     cmd.CommandText = "update Celphone set Modelo='" + txtModel.Text + "',Compania='" + cbCompania.Text + "',Problema=" + txtProblema.Text + ",Comentario='" + txtComentario.Text + "' where Id=" + txtId.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
-                    MessageBox.Show("Datos del alumno Actualizados...");
+                    MessageBox.Show("Datos de la Consulta Actualizados...");
                     LimpiarTodo();
                 }
             }
             else
             {
-                MessageBox.Show("Favor de poner el ID de un Alumno.......");
+                MessageBox.Show("Favor de poner el ID de la Consulta.......");
             }
         }
 
@@ -123,7 +123,7 @@ namespace WpfApp1
             }
             else
             {
-                MessageBox.Show("Favor de Seleccionar un alumno...");
+                MessageBox.Show("Favor de Seleccionar una Consulta...");
             }
         }
 
@@ -139,12 +139,12 @@ namespace WpfApp1
                 cmd.CommandText = "delete from Celphone where Id=" + row["Id"].ToString();
                 cmd.ExecuteNonQuery();
                 MostrarDatos();
-                MessageBox.Show("Alumno eliminado correctamente...");
+                MessageBox.Show("Consulta eliminada correctamente...");
                 LimpiarTodo();
             }
             else
             {
-                MessageBox.Show("Favor de Seleccionar un alumno...");
+                MessageBox.Show("Favor de Seleccionar una Consulta...");
             }
         }
 
